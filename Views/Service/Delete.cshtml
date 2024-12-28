@@ -1,0 +1,12 @@
+﻿@model BarberAppointmentSystem.Models.Services
+
+<h2>Servis Sil</h2>
+
+<p><strong>Servis Adı:</strong> @Model.Name</p>
+<p><strong>Açıklama:</strong> @Model.Description</p>
+<p><strong>Ücret:</strong> @Model.Price.ToString("C")</p>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a href="@Url.Action("Index", "Service")" class="btn btn-secondary">Geri</a>
+</form>

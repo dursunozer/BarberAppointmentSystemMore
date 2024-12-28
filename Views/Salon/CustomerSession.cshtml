@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Müşteri Paneli";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Hoş Geldiniz Bölümü -->
+        <div class="col-md-8">
+            <h1 class="display-4 text-primary">Merhaba, @User.Identity.Name!</h1>
+            <p class="lead">
+                Barber Appointment System'e hoş geldiniz. Burada randevularınızı kolayca yönetebilir, özel hizmetlerden yararlanabilir ve saç stilinizi yapay zeka ile keşfedebilirsiniz.
+            </p>
+        </div>
+
+        <!-- Yapay Zeka Bölümü -->
+        <div class="col-md-4">
+            <div class="card shadow-lg">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-secondary">Yapay Zeka ile Saç Stilini Keşfet</h5>
+                    <p class="card-text">
+                        Yapay zeka teknolojisini kullanarak kendinize en uygun saç stilini bulun. Hemen deneyin!
+                    </p>
+                    <a asp-controller="Ai" asp-action="Index" class="btn btn-primary btn-lg">Deneyin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ek Özellikler -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h3 class="text-secondary">Panel Özellikleri</h3>
+            <ul class="list-group">
+                <li class="list-group-item">Randevularınızı kolayca planlayın.</li>
+                <li class="list-group-item">Saç stiliniz için en iyi hizmeti seçin.</li>
+                <li class="list-group-item">Barber Appointment System'in sunduğu özel indirimlerden yararlanın.</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿<!-- Sidebar -->
+<div id="sidebar" style="width: 200px; background-color: #343a40; color: white; position: fixed; height: 100%; left: 0; transition: all 0.3s;">
+    <h3 style="padding: 15px; color: #f8f9fa;">Admin Panel</h3>
+    <ul style="list-style-type: none; padding-left: 0;">
+        <!-- Dashboard -->
+        <li style="padding: 10px; border-bottom: 1px solid #495057;">
+            <a href="@Url.Action("Dashboard", "Admin")" style="color: #f8f9fa; text-decoration: none;">--Dashboard--</a>
+        </li>
+
+        <!-- Customer Management -->
+        <li style="padding: 10px; border-bottom: 1px solid #495057;">
+            <a href="@Url.Action("CustomerList", "Admin")" style="color: #f8f9fa; text-decoration: none;">--Customer List--</a>
+        </li>
+
+        <!-- Employee Management -->
+        <li style="padding: 10px; border-bottom: 1px solid #495057;">
+            <a href="@Url.Action("EmployeeList", "Admin")" style="color: #f8f9fa; text-decoration: none;">--Employee List--</a>
+        </li>
+
+        <!-- Services Management -->
+        <li style="padding: 10px; border-bottom: 1px solid #495057;">
+            <a href="@Url.Action("Index", "Service")" style="color: #f8f9fa; text-decoration: none;">--Services--</a>
+        </li>
+    </ul>
+</div>
+
+<!-- Sidebar Toggle Button -->
+<button id="toggleSidebar" style="position: fixed; top: 11px; left: 15px; z-index: 999; background-color: #343a40; color: white; border: none; padding: 10px;">
+    ☰
+</button>
+
+<script>
+    // Sidebar toggle logic
+    document.getElementById("toggleSidebar").addEventListener("click", function () {
+        var sidebar = document.getElementById("sidebar");
+
+        if (sidebar.style.left === "0px" || sidebar.style.left === "") {
+            sidebar.style.left = "-250px"; // Sidebar gizlenir
+        } else {
+            sidebar.style.left = "0px"; // Sidebar gösterilir
+        }
+    });
+</script>

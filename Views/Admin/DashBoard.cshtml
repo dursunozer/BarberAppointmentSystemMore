@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h1>Admin Dashboard</h1>
+
+@section AdminSidebar {
+    @await Html.PartialAsync("_AdminSidebar")
+}
+
+<div style="display: flex; gap: 20px; flex-wrap: wrap;">
+    <!-- Günlük Kazanç -->
+    <div style="border: 1px solid #ccc; padding: 20px; width: 30%; flex-grow: 1;">
+        <h2>Günlük Kazanç</h2>
+        <p>@ViewBag.DailyEarnings TL</p>
+    </div>
+
+    <!-- Bugünkü Randevu Sayısı -->
+    <div style="border: 1px solid #ccc; padding: 20px; width: 30%; flex-grow: 1;">
+        <h2>Bugünkü Randevular</h2>
+        <p>@ViewBag.AppointmentCountToday adet randevu alınmış.</p>
+    </div>
+
+    <!-- Çalışan Durumu -->
+    <div style="border: 1px solid #ccc; padding: 20px; width: 60%; flex-grow: 1;">
+        <h2>Çalışan Durumu</h2>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Adı</th>
+                    <th>Durumu</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (ViewBag.Employees.Count > 0)
+                {
+                    @foreach (var employee in ViewBag.Employees)
+                    {
+                                <tr>
+                                    <td>@employee.FirstName @employee.LastName (@employee.Role)</td>
+                                    <td>
+                                        <span style="color: @(employee.Status == "Uygun" ? "green" : "red");">
+                                    @employee.Status
+                                        </span>
+                                    </td>
+                                </tr>
+                    }
+                }
+                else
+                {
+                        <tr>
+                            <td colspan="2">Şu anda görüntülenecek çalışan bulunmamaktadır.</td>
+                        </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

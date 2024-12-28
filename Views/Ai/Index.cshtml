@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Hairstyle Changer";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center text-primary">AI ile Sana Uygun Saç Tipini Bul</h2>
+    <p class="text-center text-muted">Fotoğrafını yükle ve yapay zekânın senin için önerdiği en uygun saç tipini gör!</p>
+
+    <div class="card shadow p-4 mt-4">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group mb-3">
+                <label class="form-label fw-bold">Fotoğraf Yükle:</label>
+                <input type="file" class="form-control" name="uploadedImage" />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Gönder</button>
+        </form>
+    </div>
+
+    <hr class="my-4" />
+
+    <!-- Hata mesajı varsa göster -->
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger text-center mt-3">
+            <strong>Hata:</strong> @ViewBag.Error
+        </div>
+    }
+
+    <!-- Eğer tek sonuç geldiyse göster -->
+    @if (ViewBag.ResultImageBase64 != null)
+    {
+        <div class="card shadow mt-4">
+            <div class="card-body text-center">
+                <h3 class="card-title text-success">Seçilen Saç Tipi:</h3>
+                <p class="text-muted">@ViewBag.SelectedHairTypeName (@ViewBag.SelectedHairTypeCode)</p>
+                <img src="data:image/jpeg;base64,@ViewBag.ResultImageBase64" alt="Sonuç" class="img-fluid rounded mt-3" style="max-width: 100%; height: auto;" />
+            </div>
+        </div>
+    }
+</div>

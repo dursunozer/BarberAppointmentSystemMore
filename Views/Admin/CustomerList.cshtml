@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BarberAppointmentSystem.Models.Customer>
+
+<h2>Müşteri Listesi</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Email</th>
+            <th>Telefon</th>
+            <th>Aksiyonlar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.FirstName</td>
+                <td>@customer.LastName</td>
+                <td>@customer.Email</td>
+                <td>@customer.Phone</td>
+                <td>
+                    <!-- Düzenle Butonu -->
+                    <a asp-action="EditCustomer" asp-route-id="@customer.CustomerId" class="btn btn-warning">Düzenle</a>
+
+                    <!-- Sil Butonu -->
+                    <form asp-action="DeleteCustomer" asp-route-CustomerId="@customer.CustomerId" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
